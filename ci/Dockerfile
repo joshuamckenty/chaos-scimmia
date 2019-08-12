@@ -3,6 +3,8 @@ FROM ubuntu:latest
 USER root
 WORKDIR /home/scimmia
 RUN apt-get update && apt-get install -y \
-  redis-tools
+  redis-tools python3.6 python-pip && \
+  pip3 install nose && \
+  pip3 install redis
 
-COPY test.sh /home/scimmia/
+COPY scimmia /home/
