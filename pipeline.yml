@@ -1,0 +1,27 @@
+---
+resources:
+- name: 2m
+  type: time
+  source: {interval: 2m}
+
+jobs:
+- name: job-hello-world
+  public: true
+  plan:
+  - get: 2m
+    trigger: true
+  - task: hello-world
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: busybox}
+      run:
+        path: ping
+        args:
+        - "10.0.0.4"
+        - "-c1"
+
+
+# Maybe use https://github.com/concourse/concourse-pipeline-resource
+# to unpause the test scripts once the upgrade starts?

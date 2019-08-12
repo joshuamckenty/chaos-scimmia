@@ -1,0 +1,25 @@
+---
+resources:
+- name: chaos-scimmia
+  type: git
+  source:
+    uri: https://github.com/joshuamckenty/chaos-scimmia.git
+    branch: master
+
+- name: scimmia-docker-image
+  type: docker-image
+  source:
+    email: ((docker-hub-email))
+    username: ((docker-hub-username))
+    password: ((docker-hub-password))
+    repository: ((docker-hub-username))/scimmia
+
+jobs:
+- name: publish
+  public: true
+  serial: true
+  plan:
+  - get: chaos-scimmia
+  - put: scimmia-docker-image
+    params:
+      build: chaos-scimmia/ci
