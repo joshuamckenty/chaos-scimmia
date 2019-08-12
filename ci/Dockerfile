@@ -7,4 +7,4 @@ RUN apt-get update && apt-get install -y \
   pip install nose && \
   pip install redis
 
-COPY scimmia /home/
+COPY scimmia /home/scimmia
