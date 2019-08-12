@@ -11,16 +11,16 @@ jobs:
   - get: 2m
     trigger: true
   - task: hello-world
+    params:
+      REDIS_HOST: ((redis-host))
     config:
       platform: linux
       image_resource:
         type: docker-image
-        source: {repository: busybox}
+        source: {repository: joshuamckenty/scimmia}
       run:
-        path: ping
-        args:
-        - "10.0.0.4"
-        - "-c1"
+        path: /home/scimmia/test.sh
+        args: []
 
 
 # Maybe use https://github.com/concourse/concourse-pipeline-resource

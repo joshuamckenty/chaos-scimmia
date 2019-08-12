@@ -6,5 +6,6 @@
 # in a loop, increment keys and save timestamps
 # expose a REST API for current status of looping
 
+redis-cli -h $REDIS_HOST get foo
 echo "Done"
 exit 0
