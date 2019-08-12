@@ -7,8 +7,11 @@
 # expose a REST API for current status of looping
 # export TIMESTAMP=`redis-cli -h $REDIS_HOST --raw time | head -n 1`
 
+DIR=$(cd $( dirname ${BASH_SOURCE[0]} ) && pwd)
+
 redis-cli -h $REDIS_HOST lpush scimmia `redis-cli -h $REDIS_HOST --raw TIME | head -n 1`
-nosetests -v redis_test.py
+
+PYTHONPATH=$PYTHONPATH:$DIR nosetests -v redis_test.py
 
 # LRANGE scimmia -2 2
 # redis-cli -h $REDIS_HOST get foo
