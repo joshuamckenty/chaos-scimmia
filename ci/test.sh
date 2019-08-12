@@ -9,5 +9,5 @@ TIMESTAMP = `redis-cli --raw time | head -n 1`
 redis-cli -h $REDIS_HOST lpush scimmia $TIMESTAMP
 # LRANGE scimmia -2 2
 # redis-cli -h $REDIS_HOST get foo
-echo "Done"
-exit 0
+# echo "Done"
+# exit 0
