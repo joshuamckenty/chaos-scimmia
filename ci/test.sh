@@ -5,7 +5,7 @@
 # set some keys
 # in a loop, increment keys and save timestamps
 # expose a REST API for current status of looping
-export TIMESTAMP = `redis-cli --raw time | head -n 1`
+export TIMESTAMP=`redis-cli -h $REDIS_HOST --raw time | head -n 1`
 redis-cli -h $REDIS_HOST lpush scimmia $TIMESTAMP
 # LRANGE scimmia -2 2
 # redis-cli -h $REDIS_HOST get foo
